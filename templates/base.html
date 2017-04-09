@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+    border-right:2px solid rgb(230,230,230);
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 18px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: OrangeRed;
+}
+</style>
+</head>
+<body>
+<ul>
+    <li><a class="active" href="/inicio/siu<%3Dp">Inicio</a>
+    <li><a href="/corresip/siu<=p">Correr SIP</a></li>
+    <li><a href="/subesip/siu<=p">Subir SIP</a></li>
+    <li><a href="/borrasip/siu<=p">Borrar SIP</a></li>
+    <li><a href="/archivos/siu<=p">Archivos</a></li>
+</ul>
+
+</body>
+</html>
+<head>
+<meta charset="utf-8">
+<title>Emula SIP - {{ title }}</title>
+</head>
+<body style="background-color: rgb(230,230,230);">
+{% block play%}{% endblock %}
+</body>
+<style>
+body, input[type=submit], input[type=password],input[type=text]{
+    font-size: 180%;
+}
+
+
+input[type=file] {
+    font-size: 100%;
+    width: 100%;
+}
+
+select {
+       padding: 16px 32px;
+       font-size: 20px;
+       width: 60%;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.NiceButton {
+    border-radius: 6px;
+    padding: 20px 34px;
+    font-size: 20px;
+    background-color: OrangeRed;
+    color: white;
+    border: 2px solid OrangeRed;
+
+}
+
+.NiceButton:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid OrangeRed;
+}
+
+img {
+    width: 64%;
+    float: right;
+}
+
+a {color: OrangeRed;}
+h3, h2, h1{color:black;}
+
+
+</style>
+</html>
+

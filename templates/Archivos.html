@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block play %}
+
+<h4 style="color: OrangeRed"> SIP disponibles:</h4>
+    <h5>
+       {% for i in range(numsips) %}
+       <p><a style="color: #444;" href="/{{ sips[i]+'?'+randn }}" target="_blank"> {{ i+1 }}) {{ sips[i] }} </a></p>
+       {% endfor %}
+    </h5>
+
+<h4 style="color: OrangeRed"> Documentación de apoyo:</h4>
+    <h5>
+        {% for i in range(numpdfs) %}
+        <p><a style="color: #444;" href="/{{ pdfs[i]+'?'+randn }}" target="_blank"> {{ i+1 }}) {{ pdfs[i] }} </a></p>
+        {% endfor %}
+    </h5>
+
+
+{% endblock %}
