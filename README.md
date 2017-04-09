@@ -9,6 +9,14 @@ Andreas Polymeris, otroyovirtual@gmail.com
 
 **Como crear un virtual environment y server local:**
 
+clonar el repositorio
+```
+git clone https://github.com/Otroyo/EmulaSIP
+```
+```
+cd EmulaSIP
+```
+
 instalar apache:
 ```
 sudo apt-get install apache2
