@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 {% block play %}
 <html>
-<h4><p><a  href={{ upr+'?'+numeroR }} target="_blank" > SIP CORRIDO:  {{ sipsele }}</a></p></h4>
-<h4><p><a href={{ '/palabras.txt'+'?'+numeroR }} target="_blank"> Palabras del computo </a></p></h4>
-<h5>  Palabra Inicial: </h5>
-<p> {{ pinicial }} </p>
-<h5>  Palabra Final: </h5>
-<p> {{ pfinal }}  </p>
-<h5> N de iteraciones: {{ iteraciones}} </h5>
-<h5> Tiempo CPU: {{ Time }} </h5>
-
+<h4 style="float: left; width: 50%"><p><a href={{upr+'?'+numeroR }}
+                                          target="_blank" style="color: #444"> SIP CORRIDO:  {{ sipsele }}</a></p></h4>
+<h4 style="float: left; width: 50%"><p><a href={{'/palabras.txt'+'?'+numeroR }}
+                                          target="_blank" style="color: #444">Palabras del computo </a></p></h4>
 
 <form action = {{ uco }} method = "POST">
     <div class="wrapper">
         <button class="button NiceButton" style="width: 50%;">Correr {{sipsele}}</button>
     </div>
 </form>
+
+<h4 style="margin-bottom: 0; color: OrangeRed;">Infromación del computo:</h4>
+<div class="scroll" style="width: 90%; height: 30%; position: fixed">
+    <h5>  Palabra Inicial: </h5>
+    <p> {{ pinicial }} </p>
+    <h5>  Palabra Final: </h5>
+    <p> {{ pfinal }}  </p>
+    <h5> N de iteraciones: {{ iteraciones}} </h5>
+    <h5> Tiempo CPU: {{ Time }} </h5>
+</div>
 </html>
 {% endblock %}
