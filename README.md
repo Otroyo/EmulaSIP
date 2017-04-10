@@ -16,11 +16,6 @@ git clone https://github.com/Otroyo/EmulaSIP
 ```
 cd EmulaSIP
 ```
-
-instalar apache:
-```
-sudo apt-get install apache2
-```
 crear directorios web (se deberan crear estos directorios, con por ejemplo: mkdir):
 ```
 /var/www/uploads/
