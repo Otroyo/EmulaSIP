@@ -36,11 +36,6 @@ sudo apt-get install virtualenv
 o
 sudo apt-get install python-virtualenv
 ```
-instalar pip y Flask:
-```
-sudo apt-get install python-pip
-sudo pip install flask
-```
 Crear un virtualenv con flask (debe crearce en la carpeta EmulaSIP, junto a flask_app.py, templates y el resto de archivos):
 ```
 virtualenv flask

@@ -41,7 +41,7 @@ li a:hover:not(.active) {
     <li><a href="/subesip/siu<=p">Subir Archivo</a></li>
     <li><a href="/borrasip/siu<=p">Borrar Archivo</a></li>
     <li><a href="/archivos/siu<=p">Archivos</a></li>
-    <li style="float:right; border-left:1px solid rgb(230,230,230);"><a class="active" href="/about/siu<=p">Motivo</a></li>
+    <li style="float:right; border-left:1px solid rgb(230,230,230);"><a href="/about/siu<=p">About</a></li>
 </ul>
 
 </body>

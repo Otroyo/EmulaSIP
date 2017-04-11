@@ -6,7 +6,7 @@ p {
     font-size: 80%;
 }
 </style>
-<div style="float: left; position: relative; top: 20px;">
+<div style="float: left; position: relative; top: 50px;">
     <p>    
         Este Emulador lo desarrollamos para apoyar un cursillo orientado a Entender Qué es la Computación. 
         Consideramos que eso es importante para aquellos que anhelen crear nuevos desarrollos de este fenómeno. 
