@@ -5,7 +5,7 @@
 <div class="scroll" >
     <h5 style="font-size: 80%;">
        {% for i in range(numsips) %}
-       <p><a style="color: #444;" href="/{{ sips[i]+'?'+randn }}" target="_blank"> {{ i+1 }}) {{ sips[i] }} </a></p>
+       <p><a style="color: #444;" href="/{{ sips[i]+'?'+randn }}" target="_blank"> {{ sips[i] }} </a></p>
        {% endfor %}
     </h5>
 </div>
@@ -13,7 +13,7 @@
 <div class="scroll" style="margin-left: 13%">
     <h5>
         {% for i in range(numpdfs) %}
-        <p><a style="color: #444;" href="/{{ pdfs[i]+'?'+randn }}" target="_blank"> {{ i+1 }}) {{ pdfs[i] }} </a></p>
+        <p><a style="color: #444;" href="/{{ pdfs[i]+'?'+randn }}" target="_blank"> {{ pdfs[i] }} </a></p>
         {% endfor %}
     </h5>
 </div>

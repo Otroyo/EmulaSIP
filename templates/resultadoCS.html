@@ -8,13 +8,7 @@
     <p><a href={{'/palabras.txt'+'?'+numeroR }} target="_blank" style="color: #444">Palabras del computo </a></p>
 </h4>
 
-<form action = {{ uco }} method = "POST">
-    <div class="wrapper">
-        <button class="button NiceButton" style="width: 50%;">Correr {{sipsele}}</button>
-    </div>
-</form>
-
-<h4 style="margin-bottom: 0%; color: OrangeRed;">Infromación del computo:</h4>
+<h4 style="margin-bottom: 0%; color: OrangeRed;">Información del computo:</h4>
 <div class="scroll" style="width: 97%; height: 30%; margin-bottom: 1%">
     <h5>  Palabra Inicial: </h5>
     <p> {{ pinicial }} </p>
@@ -23,5 +17,12 @@
     <h5> N de iteraciones: {{ iteraciones}} </h5>
     <h5> Tiempo CPU: {{ Time }} </h5>
 </div>
+
+<form action = {{ uco }} method = "POST">
+    <div class="wrapper">
+        <button class="button NiceButton" style="width: 50%;">Correr {{sipsele}}</button>
+    </div>
+</form>
+
 </html>
 {% endblock %}

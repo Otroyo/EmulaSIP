@@ -3,30 +3,42 @@ Desarrollamos un Emulador de Sistemas de Post, que se puede correr online en
 http://otroyo.pythonanywhere.com/
 
 **Ello, para apoyar un cursillo orientado a alumnos de colegios, interesados en 
-comprender: Computación ¿Qué Es?**
+comprender: lo que és la Computación**
+
+
 Si a alguien le interesa, por favor comuníquese conmigo:
-Andreas Polymeris, otroyovirtual@gmail.com 
+Andreas Polymeris, andreaspolymeris@gmail.com
+
 
 **Como crear un virtual environment y server local:**
+crear directorios web (se deberan crear estos directorios, con por ejemplo: mkdir):
+```
+/var/www/uploads/
+/var/www/temporal/
+```
+dar permisos necesarios a los directorios:
+```
+sudo chmod 777 www/
+sudo chmod 777 uploads/
+sudo chmod 777 temporal/
 
+```
 clonar el repositorio
 ```
 git clone https://github.com/Otroyo/EmulaSIP
 ```
 ```
 cd EmulaSIP
-```
-crear directorios web (se deberan crear estos directorios, con por ejemplo: mkdir):
-```
-/var/www/uploads/
-/var/www/temporal/
-```
+``` 
 intalar Virtualenv:
 ```
 sudo apt-get install virtualenv
+o
+sudo apt-get install python-virtualenv
 ```
-instalar Flask:
+instalar pip y Flask:
 ```
+sudo apt-get install python-pip
 sudo pip install flask
 ```
 Crear un virtualenv con flask (debe crearce en la carpeta EmulaSIP, junto a flask_app.py, templates y el resto de archivos):
