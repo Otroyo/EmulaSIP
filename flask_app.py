@@ -134,8 +134,9 @@ def corre(sipsele, clave):
     if not clave == cpuesta:
         return redirect('')
     ues = url_for('ejecuta', sipsele = sipsele, clave = cpuesta)
+    upr = urljoin('/', sipsele)
     return render_template('pinicial.html', title = 'Ingreso',
-                           sipsele = sipsele, ues = ues)
+                           sipsele = sipsele, ues = ues, upr = upr)
 
 # Funciones del emulador que se emplean en ejecuta(sipsele)
 
