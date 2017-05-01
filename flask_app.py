@@ -74,6 +74,7 @@ def allowed_file(filename):
 
 @app.route('/subesip/<clave>', methods=['GET', 'POST'])
 def subesip(clave):
+    warning = ""
     if not clave == cpuesta:
         return redirect('')
     if request.method == 'POST':
@@ -89,9 +90,14 @@ def subesip(clave):
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('inicio', clave = cpuesta))
-    return render_template("upload.html", title = 'Subir')
+            sips = [f for f in os.listdir('/var/www/uploads') if f.endswith('txt')]
+            if not filename in sips:
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                warning = "Archivo subido correctamente."
+            else:
+                warning = "Ya existe un archivo con ese nombre"
+            # return redirect(url_for('inicio', clave = cpuesta))
+    return render_template("upload.html", title = 'Subir', warning = warning)
 
 @app.route('/<filename>')
 def uploaded_file(filename):
@@ -149,7 +155,7 @@ def archivo(u):
     """
     lee el archivo de post y lo transforma a la lista de pares
     """
-    def leer_linea(line):
+    def leer_linea(line, li):
         Ll = list(line.strip())
         yes = True
         if Ll == [] or Ll[0] == "/" and Ll[1] == "/":
@@ -163,15 +169,13 @@ def archivo(u):
             q = list(q)
             par = [p, q]
             li.append(par)
+        return li
 
     li = []
     infile = open(u, 'r')
     text = infile.readlines()
     for line in text:
-        leer_linea(line)
-        x = list(line)
-        if x[0] == "%":
-            break
+        li = leer_linea(line, li)
     for i in li:
         print (i)
     return li
@@ -213,7 +217,7 @@ def recorre_li(li, word):
         if end == 1:
             break
         k = k+1
-        if li[k][0] == ["%"]:
+        if li[k-1] == li[-1]:
             fin = 1
             break
     return fin, word
