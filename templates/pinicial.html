@@ -1,18 +1,18 @@
-{% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% block play %}
 <html>
 <h2></h2>
     <body>
 
        <form action = {{ ues }} method = "POST">
-           <h5>Vea SIP SELECCIONADO:  <a href={{upr+'?'}} target="_blank" style="color: #444">  {{ sipsele }}</a></h5>
-           
+           <h5>Vea SIP SELECCIONADO:  <a href={{upr+'?'+numeroR}} target="_blank" style="color: #444">  {{ sipsele }}</a></h5>
+
            <h5>Ingrese Palabra a correr:</h5>
            <h5><input type = "text" name = "pinicial" ></h5>
-           
+
            <h5>Ingrese tope de iteraciones (en numeros naturales):</h5>
            <h5><input type="text" size="15" maxlength="30" value= "1000000" name="tope"></h5>
-           
+
            <h2></h2>
            <div class="wrapper">
                <button class="button NiceButton" style="width: 50%;">Correr</button>

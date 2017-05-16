@@ -4,6 +4,8 @@
     <style>
 ul {
     list-style-type: none;
+    width: 100%;
+    top: 0;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -12,15 +14,16 @@ ul {
 
 li {
     float: left;
-    border-right:1px solid rgb(230,230,230);
+    border-right:2px solid rgba(200, 200, 200, 0.5);
 }
 
 li a {
     font-size: 90%%;
     display: block;
     color: white;
+    font-size: 70%;
     text-align: center;
-    padding: 20px 18px;
+    padding: 18px 16px;
     text-decoration: none;
 }
 
@@ -32,6 +35,14 @@ li a:hover:not(.active) {
     background-color: OrangeRed;
 }
 
+li a.active:hover{
+}
+
+body {
+      margin-top: 0px;
+  	  margin-left: 0px;
+  	  margin-right: 0px;
+}
 </style>
 </head>
 <body>
@@ -41,7 +52,9 @@ li a:hover:not(.active) {
     <li><a href="/subesip/siu<=p">Subir Archivo</a></li>
     <li><a href="/borrasip/siu<=p">Borrar Archivo</a></li>
     <li><a href="/archivos/siu<=p">Archivos</a></li>
-    <li style="float:right; border-left:1px solid rgb(230,230,230);"><a class="active" href="/about/siu<=p">Motivo</a></li>
+    <li style="float:right; border-left:2px solid rgba(200, 200, 200, 0.5);
+               border-right: 2px solid OrangeRed">
+              <a class="active" href="/about/siu<=p">Motivo</a></li>
 </ul>
 
 </body>
@@ -51,11 +64,12 @@ li a:hover:not(.active) {
 <title>Emula SIP - {{ title }}</title>
 </head>
 <body style="background-color: rgb(230,230,230);">
-{% block play%}{% endblock %}
+     {% block play%}{% endblock %}
 </body>
 <style>
 body, input[type=submit], input[type=password],input[type=text]{
     font-size: 170%;
+
 }
 
 
@@ -111,4 +125,3 @@ div.scroll {
 
 </style>
 </html>
-
