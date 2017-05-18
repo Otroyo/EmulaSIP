@@ -1,8 +1,8 @@
-# EmulaSIP 
-Desarrollamos un Emulador de Sistemas de Post, que se puede correr online en 
+# EmulaSIP
+Desarrollamos un Emulador de Sistemas de Post, que se puede correr online en
 http://otroyo.pythonanywhere.com/
 
-**Ello, para apoyar un cursillo orientado a alumnos de colegios, interesados en 
+**Ello, para apoyar un cursillo orientado a alumnos de colegios, interesados en
 comprender: lo que és la Computación**
 
 
@@ -11,6 +11,17 @@ Andreas Polymeris, andreaspolymeris@gmail.com
 
 
 **Como crear un virtual environment y server local:**
+
+Instalar virtualenv:
+```
+sudo apt-get install virtualenv
+o
+sudo apt-get install python-virtualenv
+o
+sudo apt-get install python-pip
+sudo pip install virtualenv
+```
+
 crear directorios web (se deberan crear estos directorios, con por ejemplo: mkdir):
 ```
 /var/www/uploads/
@@ -23,28 +34,23 @@ sudo chmod 777 uploads/
 sudo chmod 777 temporal/
 
 ```
-clonar el repositorio
+crear carpetda de proyecto Flask:
 ```
-git clone https://github.com/Otroyo/EmulaSIP
-```
-```
-cd EmulaSIP
-``` 
-intalar Virtualenv:
-```
-sudo apt-get install virtualenv
-o
-sudo apt-get install python-virtualenv
-```
-Crear un virtualenv con flask (debe crearce en la carpeta EmulaSIP, junto a flask_app.py, templates y el resto de archivos):
-```
+mkdir EmulaSIP-flask
+cd EmulaSIP-flask
 virtualenv flask
 ```
-Añadir las librearias necesarias: (copiar y pegar todo junto en la consola, quizas sea necesario el comando sudo)
+copiar este graaaan comando en la terminal!!(dentro de su carpeta de proyecto Flask):
 ```
 flask/bin/pip install flask && flask/bin/pip install flask-login && flask/bin/pip install flask-openid && flask/bin/pip install flask-mail && flask/bin/pip install flask-sqlalchemy && flask/bin/pip install sqlalchemy-migrate && flask/bin/pip install flask-whooshalchemy && flask/bin/pip install flask-whooshalchemy && flask/bin/pip install flask-wtf && flask/bin/pip install flask-babel && flask/bin/pip install guess_language && flask/bin/pip install flipflop && flask/bin/pip install coverage
 ```
-correr pagina web(se debe estar dentro de EmulaSIP:
+Clonar repositorio(Dentro de su carpeta de proyecto Flask):
 ```
-flask/bin/python2.7 flask_app.py
+//si no tiene git:
+
+sudo apt-get install git
+
+//despues:
+
+git clone https://github.com/otroyo/EmulaSIP
 ```
