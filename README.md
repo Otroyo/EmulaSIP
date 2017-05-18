@@ -35,6 +35,7 @@ sudo chmod 777 temporal/
 
 ```
 crear carpetda de proyecto Flask:
+
 ```
 mkdir EmulaSIP-flask
 cd EmulaSIP-flask
@@ -53,4 +54,11 @@ sudo apt-get install git
 //despues:
 
 git clone https://github.com/otroyo/EmulaSIP
+```
+Correr en localhost:
+
+_Dentro de su carpeta de proyecto Flask:_
+
+```
+flask/bin/python2.7 EmulaSIP/flask_app.py
 ```
