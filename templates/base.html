@@ -14,7 +14,6 @@ ul {
 
 li {
     float: left;
-    border-right:2px solid rgba(200, 200, 200, 0.5);
 }
 
 li a {
@@ -52,9 +51,7 @@ body {
     <li><a href="/subesip/siu<=p">Subir Archivo</a></li>
     <li><a href="/borrasip/siu<=p">Borrar Archivo</a></li>
     <li><a href="/archivos/siu<=p">Archivos</a></li>
-    <li style="float:right; border-left:2px solid rgba(200, 200, 200, 0.5);
-               border-right: 2px solid OrangeRed">
-              <a class="active" href="/about/siu<=p">Motivo</a></li>
+    <li style="float:right;"> <a class="active" href="/about/siu<=p">Motivo</a></li>
 </ul>
 
 </body>
@@ -64,11 +61,13 @@ body {
 <title>Emula SIP - {{ title }}</title>
 </head>
 <body style="background-color: rgb(230,230,230);">
+    <div style="margin: 2%">
      {% block play%}{% endblock %}
+    </div>
 </body>
 <style>
 body, input[type=submit], input[type=password],input[type=text]{
-    font-size: 170%;
+    font-size: 150%;
 
 }
 
