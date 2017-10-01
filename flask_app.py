@@ -8,6 +8,7 @@ from flask import Flask, request, render_template, redirect, url_for, \
 from werkzeug.utils import secure_filename
 from urlparse import urljoin
 from random import randint
+from post_functions import *
 
 # la proxima linea es la unica adaptacion cuando se cambia de Host;
 # mas, eventualmente, el quitar las ultimas dos lineas de este codigo
@@ -53,8 +54,10 @@ def inicio(clave):
 def archivos(clave):
     if not clave == cpuesta:
         return redirect('')
-    sips = [f for f in os.listdir('/var/www/uploads') if f.endswith('txt')]
-    pdfs = [f for f in os.listdir('/var/www/uploads') if not f.endswith('txt')]
+    sips = [f for f in os.listdir(UPLOAD_FOLDER) if f.endswith('.txt')]
+    sips = sorted(sips)
+    pdfs = [f for f in os.listdir(UPLOAD_FOLDER) if not f.endswith('.txt')]
+    pdfs = sorted(pdfs)
     numsips = len(sips)
     numpdfs = len(pdfs)
     randn = str(randint(9000, 99999))
@@ -194,108 +197,6 @@ def palabras():
     return filecontent2
 
 
-def archivo(u):
-    """
-    lee el archivo de post y lo transforma a la lista de pares
-    """
-    def leer_linea(line, li):
-        Ll = list(line.strip())
-        yes = True
-        if Ll == [] or Ll[0] == "/" and Ll[1] == "/":
-            yes = False
-        if yes:
-            p, q = line.split(",")
-            p = p.strip()
-            q = q.strip()
-            q = q.strip(";")
-            p = list(p)
-            q = list(q)
-            par = [p, q]
-            li.append(par)
-        return li
-
-    def syntax_error(text):
-        tli = []
-        count = 1
-        for line in text:
-            ll = list(line)
-            if ll != [] and len(ll) != 1 and ll[0:2] != ['/', '/']:
-                tli.append((ll, count))
-            count += 1
-
-        essential = []
-        for line in tli:
-            lline = ([x for x in line[0] if x == "," or x == ";"], line[1])
-            essential.append(lline)
-
-        errors = []
-        for x in essential:
-            if not x[0] == [',', ';']:
-                errors.append(x)
-
-        if errors != []:
-            return (True, errors[0][1])
-        return (False, None)
-
-    li = []
-    infile = open(u, 'r')
-    text = infile.readlines()
-    tli = syntax_error(text)
-
-    if tli[0]:
-        return (False, "Error de syntaxis en linea "+str(tli[1])+"!",
-                str(text[tli[1]-1]))
-
-    for l in text:
-        li = leer_linea(l, li)
-
-    return (True, li)
-
-
-def revision(p, q, word):
-    """
-    reisa si el "p" de li calsa con "word", retorna la palabra y end
-    dependiendo si es la palabra correcta o no
-    """
-    z, end, word2, count = len(p), 0, [], 0
-
-    for i in word:
-        count += 1
-        if z < count:
-            break
-
-    if count >= z:
-        for el in range(0, z):
-            word2.append(word[el])
-
-        if p == word2:
-            end = 1
-            for el in range(0, z):
-                word.pop(0)
-            word.extend(q)
-    return end, word
-
-
-def recorre_li(li, word):
-    """
-    usando la funcion de revision busca los P correspondientes a cada word
-    hasta encontrarse con "%", retorna la ultima "word" usada
-    """
-    fin = 0
-    k = 0
-    while True:
-        p = li[k][0]
-        q = li[k][1]
-        end, word = revision(p, q, word)
-        if end == 1:
-            break
-        k = k+1
-        if li[k-1] == li[-1]:
-            fin = 1
-            break
-    return fin, word
-
-
 @app.route('/ejecuta/<sipsele>/<clave>', methods=['POST', 'GET'])
 def ejecuta(sipsele, clave):
     if not clave == cpuesta:
@@ -313,7 +214,7 @@ def ejecuta(sipsele, clave):
         filepreventivo = open('/var/www/temporal/palabras.txt', 'w')
         os.remove('/var/www/temporal/palabras.txt')
         start = time.clock()
-        fin = 0
+        fin = False
         fl = archivo(u)
         word = pinicial
         word = list(word)
@@ -322,10 +223,10 @@ def ejecuta(sipsele, clave):
         file.write("".join(word)+"   - entrada\n")
         iteraciones = 0
 
-        if fin == 0:
+        if not fin:
             li = fl[1]
 
-        while fin == 0:
+        while not fin:
             fin, word = recorre_li(li, word)
             iteraciones += 1
             if not iteraciones > 100000 and not fin == 1:
