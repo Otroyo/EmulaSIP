@@ -124,9 +124,10 @@ def uploaded_file(filename):
 def borrasip(clave):
     if not clave == cpuesta:
         return redirect('')
+    files = sorted([x for x in os.listdir(UPLOAD_FOLDER)])
     return render_template(
         'delsip.html', title='Borrar',
-        data=[{'name': f} for f in os.listdir(UPLOAD_FOLDER)])
+        data=[{'name': f} for f in files])
 
 
 @app.route("/borra", methods=['GET', 'POST'])
@@ -142,11 +143,11 @@ def borra():
 def corresip(clave):
     if not clave == cpuesta:
         return redirect('')
+    sips = [f for f in os.listdir(UPLOAD_FOLDER) if f.endswith('.txt')]
+    sips = sorted(sips)
     return render_template('selectsip.html',
                            title='Seleccion',
-                           data=[{'name': f} for f in os.listdir(UPLOAD_FOLDER)
-                                 if f.endswith('txt')])
-
+                           data=[{'name': f} for f in sips])
 
 @app.route("/seguir", methods=['GET', 'POST'])
 def seguir():
@@ -180,7 +181,7 @@ def corre(sipsele, clave):
         return redirect('')
     ues = url_for('ejecuta', sipsele=sipsele, clave=cpuesta)
     upr = urljoin('/', sipsele)
-    numeroR = "1"#str(randint(9000, 9999))
+    numeroR = str(randint(9000, 9999))
     return render_template('pinicial.html',
                            title='Ingreso',
                            sipsele=sipsele,
@@ -219,24 +220,28 @@ def ejecuta(sipsele, clave):
         word = pinicial
         word = list(word)
         file = open('/var/www/temporal/palabras.txt', 'w')
-        file.write("SE ESCRIBIRAN MAXIMO 100000 PALABRAS \n \n")
+        file.write("SE ESCRIBIRAN MAXIMO 1000 PALABRAS \n \n")
         file.write("".join(word)+"   - entrada\n")
-        iteraciones = 0
+        limiteTiempo, iteraciones = tope, 0
 
         if not fin:
             li = fl[1]
 
         while not fin:
-            fin, word = recorre_li(li, word)
-            iteraciones += 1
-            if not iteraciones > 100000 and not fin == 1:
+
+            if not iteraciones > 1000:
                 file.write(("".join(word)+"  -"+str(iteraciones)))
                 file.write("\n")
-            if iteraciones == tope:
-                word = ['Llego al limite']
+                iteraciones += 1
+
+            Time = (time.clock() - start)
+            fin, word = recorre_li(li, word)
+
+            if int(Time) >= (limiteTiempo):
+                word = ['Limite de tiempo tiempo superado']
                 break
 
-        Time = time.clock()-start
+        Time = Time
         pfinal = "".join(word)
         upr = urljoin('/', sipsele)
         uco = urljoin('/corre/', sipsele+'/'+cpuesta)
