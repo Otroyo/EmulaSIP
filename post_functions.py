@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 def archivo(u):
     """
     lee el archivo de post y lo transforma a la lista de pares
@@ -54,30 +57,23 @@ def archivo(u):
     return (True, li)
 
 
-def revisa(u, v, w):
-    """
-    si p <= w, devuelve (True, (p\u)v) sino (False, (p\u))
-    """
-    if not u:
-        return (True, w+v)
-    elif not w:
-        return (False, [])
-    elif w[0] == u[0]:
-        return revisa(u[1:], v, w[1:])
-    else:
-        return (False, [])
+def revicion(u,v,w):
+    trash = []
+    for x in range(len(u)):
+        u0 = u[x]
+        if u0 == w[0]:
+            trash.append(u0)
+            w.pop(0)
+        else:
+            trash.extend(w)
+            return trash, False
+    w.extend(v)
+    return w, True
 
 
-def recorre_li(li, word):
-    """
-    Hace un cambio en word.
-    """
-    end = False
-    for pair in li:
-        u = pair[0]
-        v = pair[1]
-        end, w = revisa(u, v, word)
-        if end:
-            word = w
-            break
-    return (not end), word
+def recorre_li(sip, w):
+    for (u,v) in sip:
+        w, b = revicion(u, v, w)
+        if b:
+            return False, w
+    return True, w
