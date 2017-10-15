@@ -232,7 +232,7 @@ def ejecuta(sipsele, clave):
             if not iteraciones > 1000:
                 file.write(("".join(word)+"  -"+str(iteraciones)))
                 file.write("\n")
-                iteraciones += 1
+            iteraciones += 1
 
             Time = (time.clock() - start)
             fin, word = recorre_li(li, word)
