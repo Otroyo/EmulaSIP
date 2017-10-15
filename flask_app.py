@@ -220,7 +220,7 @@ def ejecuta(sipsele, clave):
         word = pinicial
         word = list(word)
         file = open('/var/www/temporal/palabras.txt', 'w')
-        file.write("SE ESCRIBIRAN MAXIMO 1000 PALABRAS \n \n")
+        file.write("SE ESCRIBIRAN MAXIMO 10000 PALABRAS \n \n")
         file.write("".join(word)+"   - entrada\n")
         limiteTiempo, iteraciones = tope, 0
 
@@ -229,11 +229,11 @@ def ejecuta(sipsele, clave):
 
         while not fin:
 
-            if not iteraciones > 1000:
+            if not iteraciones > 10000:
                 file.write(("".join(word)+"  -"+str(iteraciones)))
                 file.write("\n")
-            iteraciones += 1
 
+            iteraciones += 1
             Time = (time.clock() - start)
             fin, word = recorre_li(li, word)
 
