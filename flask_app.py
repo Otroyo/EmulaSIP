@@ -126,7 +126,7 @@ def borrasip(clave):
         return redirect('')
     files = sorted([x for x in os.listdir(UPLOAD_FOLDER)])
     return render_template(
-        'delsip.html', title='Borrar',
+        'delsip.html',
         data=[{'name': f} for f in files])
 
 

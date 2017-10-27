@@ -4,7 +4,7 @@ Desarrollamos un Emulador de Sistemas de Post, que se puede correr online en
 [http://otroyo.pythonanywhere.com/](http://otroyo.pythonanywhere.com/)
 
 **Ello, para apoyar un cursillo orientado a alumnos de colegios, interesados en
-comprender: lo que és la Computación**
+comprender: lo que es la Computación.**
 
 
 Si a alguien le interesa, por favor comuníquese conmigo:
@@ -23,7 +23,7 @@ sudo apt-get install python-pip
 sudo pip install virtualenv
 ```
 
-crear directorios web (se deberan crear estos directorios, con por ejemplo: mkdir):
+crear directorios web (se deberán crear estos directorios, con por ejemplo: mkdir):
 ```
 /var/www/uploads/
 /var/www/temporal/
@@ -52,7 +52,7 @@ Clonar repositorio(Dentro de su carpeta de proyecto Flask):
 
 sudo apt-get install git
 
-//despues:
+//después:
 
 git clone https://github.com/otroyo/EmulaSIP
 ```
@@ -63,3 +63,10 @@ _Dentro de su carpeta de proyecto Flask:_
 ```
 flask/bin/python2.7 EmulaSIP/flask_app.py
 ```
+
+### Attribution
+
+[post logo](https://github.com/Otroyo/EmulaSIP/blob/master/static/post-line.png) from
+[OpenLogicProject](https://github.com/OpenLogicProject/portraits) is licensed
+under [CC-BY-4.0](https://creativecommons.org/licenses/by-nc/4.0/) / Desaturated
+from original
