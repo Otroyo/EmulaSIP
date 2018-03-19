@@ -59,6 +59,8 @@ def archivo(u):
 
 def revicion(u,v,w):
     trash = []
+    if len(w) < len(u):
+        return w, False
     for x in range(len(u)):
         u0 = u[x]
         if u0 == w[0]:
